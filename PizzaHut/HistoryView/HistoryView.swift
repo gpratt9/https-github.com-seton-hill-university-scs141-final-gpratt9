@@ -11,6 +11,7 @@ struct HistoryView: View {
     var body: some View {
         VStack {
             ContentHeaderView()
+            Spacer(minLength: 40)
             PageTitleView(title: "Pizza History")
             HistoryListView()
             Spacer()

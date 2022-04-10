@@ -15,6 +15,7 @@ struct ContentHeaderView: View {
                     .resizable()
                     .scaledToFit()
                 Text("Pizza Hut Company")
+                    .offset(x: -30, y: +30)
                     .font(Font.custom("Avinir-Black", size: 20))
                     .foregroundColor(.white)
             }
