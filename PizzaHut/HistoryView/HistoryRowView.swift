@@ -17,7 +17,7 @@ struct HistoryRowView: View {
             Image(systemName: "chevron.right.square")
                 .font(.title)
                 .foregroundColor(Color("G2"))
-                .offset(x: -20, y: 20)
+                .padding([.top, .trailing])
         }
     }
 }

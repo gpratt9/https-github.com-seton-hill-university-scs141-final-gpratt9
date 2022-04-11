@@ -11,23 +11,24 @@ struct PageTitleView: View {
     var title: String
     var body: some View {
         HStack {
-            Image(systemName: "chevron.up.square")
-                .font(.title)
-                .padding()
             Spacer()
             Text(title)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
-                .offset(x: -20, y: 0)
-            
-        }.background(Color("G4"))
-         .foregroundColor(Color("G2"))
-         
-    }
-}
-struct PageTitleView_Previews: PreviewProvider {
-    static var previews: some View {
-        PageTitleView(title: "Vismay Sharma")
+                .padding(.trailing)
+        }.overlay(
+            Image(systemName: "chevron.up.square")
+                .font(.title)
+                .padding()
+            ,alignment: .leading
+        )
+            .background(Color("G4"))
+            .foregroundColor(Color("G1"))
     }
 }
 
+struct PageTitleView_Previews: PreviewProvider {
+    static var previews: some View {
+        PageTitleView(title: "Order Pizza")
+    }
+}
