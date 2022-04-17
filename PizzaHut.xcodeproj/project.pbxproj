@@ -22,6 +22,10 @@
 		1C8A72E42802DE7F00B4D830 /* HistoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A72E32802DE7F00B4D830 /* HistoryListView.swift */; };
 		1C8A72E62802DF2700B4D830 /* HistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A72E52802DF2700B4D830 /* HistoryRowView.swift */; };
 		1C8A72E82802E55D00B4D830 /* ListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A72E72802E55D00B4D830 /* ListHeaderView.swift */; };
+		1C8A72F22804846600B4D830 /* SelectedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A72F12804846600B4D830 /* SelectedImageView.swift */; };
+		1C8A7326280C570600B4D830 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A7323280C570500B4D830 /* HistoryModel.swift */; };
+		1C8A7327280C570600B4D830 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A7324280C570500B4D830 /* MenuModel.swift */; };
+		1C8A7328280C570600B4D830 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A7325280C570500B4D830 /* OrderModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,10 @@
 		1C8A72E32802DE7F00B4D830 /* HistoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListView.swift; sourceTree = "<group>"; };
 		1C8A72E52802DF2700B4D830 /* HistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
 		1C8A72E72802E55D00B4D830 /* ListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderView.swift; sourceTree = "<group>"; };
+		1C8A72F12804846600B4D830 /* SelectedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageView.swift; sourceTree = "<group>"; };
+		1C8A7323280C570500B4D830 /* HistoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		1C8A7324280C570500B4D830 /* MenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		1C8A7325280C570500B4D830 /* OrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				1C36659527F8BADF00CAFDF3 /* ContentView.swift */,
+				1C8A7322280C56F500B4D830 /* Model */,
 				1C8A72E92802E6C300B4D830 /* UtilityViews */,
 				1C8A72E02802DC9600B4D830 /* HistoryView */,
 				1C8A72D12802D4C800B4D830 /* ContentHeaderView */,
@@ -136,8 +145,19 @@
 			children = (
 				1C8A72D62802D88800B4D830 /* ContentHeaderView.swift */,
 				1C8A72E72802E55D00B4D830 /* ListHeaderView.swift */,
+				1C8A72F12804846600B4D830 /* SelectedImageView.swift */,
 			);
 			path = UtilityViews;
+			sourceTree = "<group>";
+		};
+		1C8A7322280C56F500B4D830 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C8A7323280C570500B4D830 /* HistoryModel.swift */,
+				1C8A7324280C570500B4D830 /* MenuModel.swift */,
+				1C8A7325280C570500B4D830 /* OrderModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +230,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C8A7328280C570600B4D830 /* OrderModel.swift in Sources */,
+				1C8A7327280C570600B4D830 /* MenuModel.swift in Sources */,
 				1C8A72E62802DF2700B4D830 /* HistoryRowView.swift in Sources */,
 				1C8A72D92802DA2C00B4D830 /* OrderRowView.swift in Sources */,
 				1C8A72E42802DE7F00B4D830 /* HistoryListView.swift in Sources */,
@@ -219,7 +241,9 @@
 				1C8A72D52802D76000B4D830 /* MenuListView.swift in Sources */,
 				1C8A72E22802DCB300B4D830 /* HistoryView.swift in Sources */,
 				1C36659427F8BADF00CAFDF3 /* PizzaHutApp.swift in Sources */,
+				1C8A72F22804846600B4D830 /* SelectedImageView.swift in Sources */,
 				1C8A72DF2802DB6600B4D830 /* PageTitleView.swift in Sources */,
+				1C8A7326280C570600B4D830 /* HistoryModel.swift in Sources */,
 				1C8A72E82802E55D00B4D830 /* ListHeaderView.swift in Sources */,
 				1C8A72DB2802DA8300B4D830 /* MenuRowView.swift in Sources */,
 				1C8A72D32802D6F900B4D830 /* OrderListView.swift in Sources */,

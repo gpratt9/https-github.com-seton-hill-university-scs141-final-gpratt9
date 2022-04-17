@@ -10,13 +10,15 @@ import SwiftUI
 struct HistoryRowView: View {
     var body: some View {
         HStack(alignment: .top) {
-            Image("1_100w").clipShape(Circle())
+            Image("1_100w")
+                .clipShape(Circle())
+                .shadow(color: .black.opacity(0.5), radius: 10, x: 5, y: 5)
             Text("Five Pepper")
-                .font(.title2)
+                .font(.title)
             Spacer()
             Image(systemName: "chevron.right.square")
                 .font(.title)
-                .foregroundColor(Color("G2"))
+                .foregroundColor(Color("G3"))
                 .padding([.top, .trailing])
         }
     }

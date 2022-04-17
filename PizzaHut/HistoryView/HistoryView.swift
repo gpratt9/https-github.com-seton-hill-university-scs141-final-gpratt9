@@ -13,6 +13,7 @@ struct HistoryView: View {
             ContentHeaderView()
             Spacer(minLength: 40)
             PageTitleView(title: "Pizza History")
+            SelectedImageView(image: "1_250w")
             HistoryListView()
             Spacer()
         }
