@@ -14,6 +14,7 @@ struct ConfirmView: View {
     @EnvironmentObject var userPreferences: UserPreferences
     @Binding var isPresented: Bool
     @Binding var quantity: Int
+    @State var comments: String = ""
     
     ///extracts the menu item name based on `menuID`
     var name:String{
@@ -21,7 +22,7 @@ struct ConfirmView: View {
     }
     
     func addItem(){
-        orderModel.add(menuID: menuID, quantity: quantity)
+        orderModel.add(menuID: menuID, quantity: quantity, comments: comments)
         isPresented = false
     }
     
@@ -37,6 +38,8 @@ struct ConfirmView: View {
             Divider()
             Text("Confirm your order of \(quantity) \(userPreferences.size.formatted()) \(name) pizza")
                 .font(.headline)
+            TextField("Enter your comments here:", text: $comments)
+                .background(Color("G4"))
             Spacer()
             Button(action: addItem){
                 Text("Add")
