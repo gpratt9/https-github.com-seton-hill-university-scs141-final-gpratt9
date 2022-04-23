@@ -13,10 +13,11 @@ struct MenuDetailView: View {
     @ObservedObject var orderModel: OrderModel
     @EnvironmentObject var userPreferences: UserPreferences
     @State var didOrder: Bool = false
+    @State var quantity: Int = 1
     
     var menuItem:MenuItem
     var formattedPrice:String{
-        String(format:"%3.2f",menuItem.price)
+        String(format:"%3.2f",menuItem.price * Double(quantity))
     }
     func addItem(){
         //  orderModel.add(menuID: menuItem.id)
@@ -43,11 +44,15 @@ struct MenuDetailView: View {
                     Text(userPreferences.size.formatted())
                 }
                 .font(.headline)
-                HStack{
-                    Text("Quantity:")
-                    Text("1")
+//                HStack{
+//                    Text("Quantity:")
+//                    Text("1")
+//                        .bold()
+//                    Spacer()
+//                }
+                Stepper(value: $quantity, in: 1...10) {
+                    Text("Quantity: \(quantity)")
                         .bold()
-                    Spacer()
                 }
                 .padding()
                 HStack{
@@ -71,7 +76,7 @@ struct MenuDetailView: View {
                     }
                     //        .alert("You have ordered:'\(menuItem.name)' pizza", isPresented: $didOrder) {}
                     .sheet(isPresented: $didOrder) {
-                        ConfirmView(menuID: menuItem.id, orderModel: orderModel, isPresented: $didOrder)
+                        ConfirmView(menuID: menuItem.id, orderModel: orderModel, isPresented: $didOrder, quantity: $quantity)
                     }
                     
                     Spacer()
