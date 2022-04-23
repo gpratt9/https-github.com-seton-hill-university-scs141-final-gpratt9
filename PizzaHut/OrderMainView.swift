@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct OrderMainView: View {
     @ObservedObject var orderModel: OrderModel
     @State var isMenuDisplayed: Bool = true
     
     var body: some View {
         VStack {
             ContentHeaderView()
-                .layoutPriority(1)
+                .layoutPriority(2)
             Button {
                 isMenuDisplayed.toggle()
             } label: {
@@ -34,11 +34,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView(orderModel: OrderModel())
-                .environmentObject(UserPreferences())
+            OrderMainView(orderModel: OrderModel())
             
-            ContentView(orderModel: OrderModel())
-                .environmentObject(UserPreferences())
+            OrderMainView(orderModel: OrderModel())
                 .previewDevice(PreviewDevice(rawValue: "iPad 12"))
                 .colorScheme(.dark)
                 .background(.black)

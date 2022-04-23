@@ -12,71 +12,80 @@ struct MenuDetailView: View {
     
     @ObservedObject var orderModel: OrderModel
     @EnvironmentObject var userPreferences: UserPreferences
+    @State var didOrder: Bool = false
     
     var menuItem:MenuItem
     var formattedPrice:String{
         String(format:"%3.2f",menuItem.price)
     }
     func addItem(){
-        orderModel.add(menuID: menuItem.id)
+        //  orderModel.add(menuID: menuItem.id)
+        didOrder = true
     }
-
+    
     var body: some View {
         VStack {
-            PageTitleView(title: menuItem.name)
-            SelectedImageView(image: "\(menuItem.id)_250w")
-                .padding(5)
-                .layoutPriority(3)
-            
-            Text(menuItem.description)
-                .lineLimit(5)
-                .padding()
-                .layoutPriority(3)
+            ScrollView {
+                PageTitleView(title: menuItem.name)
+                SelectedImageView(image: "\(menuItem.id)_250w")
+                    .padding(5)
+                    .layoutPriority(3)
                 
-            Spacer()
-            HStack{
+                Text(menuItem.description)
+                    .lineLimit(5)
+                    .padding()
+                    .layoutPriority(3)
+                
                 Spacer()
-                Text("Pizza size")
-                Text(userPreferences.size.formatted())
-            }
-            .font(.headline)
-            HStack{
-                Text("Quantity:")
-                Text("1")
-                    .bold()
-                Spacer()
-            }
-            .padding()
-            HStack{
-                Text("Order:  \(formattedPrice)")
-                    .font(.headline)
-                Spacer()
-                Text("Order total: " + orderModel.formattedTotal )
-                    .font(.headline)
-            }
-            .padding()
-            HStack{
-                Spacer()
-                Button(action: addItem) {
-                   Text("Add to order")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding()
-                    .background(Color("G4"))
-                        .foregroundColor(Color("IP"))
-                        .cornerRadius(5)
+                HStack{
+                    Spacer()
+                    Text("Pizza size")
+                    Text(userPreferences.size.formatted())
                 }
+                .font(.headline)
+                HStack{
+                    Text("Quantity:")
+                    Text("1")
+                        .bold()
+                    Spacer()
+                }
+                .padding()
+                HStack{
+                    Text("Order:  \(formattedPrice)")
+                        .font(.headline)
+                    Spacer()
+                    Text("Order total: " + orderModel.formattedTotal )
+                        .font(.headline)
+                }
+                .padding()
+                HStack{
+                    Spacer()
+                    Button(action: addItem) {
+                        Text("Add to order")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding()
+                            .background(Color("G4"))
+                            .foregroundColor(Color("IP"))
+                            .cornerRadius(5)
+                    }
+                    //        .alert("You have ordered:'\(menuItem.name)' pizza", isPresented: $didOrder) {}
+                    .sheet(isPresented: $didOrder) {
+                        ConfirmView(menuID: menuItem.id, orderModel: orderModel, isPresented: $didOrder)
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.top)
                 Spacer()
             }
-            .padding(.top)
-            Spacer()
         }
-        
     }
 }
 
 struct MenuDetailView_Previews: PreviewProvider {
     static var previews: some View {
         MenuDetailView(orderModel: OrderModel(),  menuItem: testMenuItem)
+            .environmentObject(UserPreferences())
     }
 }

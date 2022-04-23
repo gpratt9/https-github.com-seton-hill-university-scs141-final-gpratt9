@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HistoryView: View {
-    var historyModel: HistoryModel
     @State var imageId: Int = 0
     
     var body: some View {
@@ -17,7 +16,7 @@ struct HistoryView: View {
             Spacer(minLength: 40)
             PageTitleView(title: "Pizza History")
             SelectedImageView(image: "\(imageId)_250w")
-            HistoryListView(historyModel: historyModel, imgId: $imageId)
+            HistoryListView(imgId: $imageId)
             Spacer()
         }
     }
@@ -26,8 +25,8 @@ struct HistoryView: View {
 struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HistoryView(historyModel: HistoryModel())
-            HistoryView(historyModel: HistoryModel())
+            HistoryView()
+            HistoryView()
                 .colorScheme(.dark)
                 .background(.black)
         }

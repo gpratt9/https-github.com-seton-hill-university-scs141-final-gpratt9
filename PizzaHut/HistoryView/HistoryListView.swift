@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryListView: View {
-    var historyModel: HistoryModel
+    var historyModel = HistoryModel()
     @Binding var imgId: Int
     var body: some View {
         NavigationView {
@@ -23,7 +23,7 @@ struct HistoryListView: View {
 
 struct HistoryListView_Previews: PreviewProvider {
     static var previews: some View {
-        HistoryListView(historyModel: HistoryModel(), imgId: .constant(0))
+        HistoryListView(imgId: .constant(0))
     }
 }
 
