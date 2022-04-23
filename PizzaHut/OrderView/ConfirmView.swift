@@ -11,6 +11,7 @@ import SwiftUI
 struct ConfirmView: View {
     var menuID: Int
     @ObservedObject var orderModel:OrderModel
+    @EnvironmentObject var userPreferences: UserPreferences
     @Binding var isPresented: Bool
     @Binding var quantity: Int
     
@@ -34,7 +35,7 @@ struct ConfirmView: View {
             SelectedImageView(image: "\(menuID)_250w")
                 .padding(10)
             Divider()
-            Text("Confirm your order of \(quantity) \(name) pizza")
+            Text("Confirm your order of \(quantity) \(userPreferences.size.formatted()) \(name) pizza")
                 .font(.headline)
             Spacer()
             Button(action: addItem){

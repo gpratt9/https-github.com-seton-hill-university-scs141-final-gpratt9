@@ -9,7 +9,7 @@
 import SwiftUI
 ///A `View`for entering in an order. Takes basic information about the order from `menuItem`
 struct MenuDetailView: View {
-    
+    let sizes: [Size] = [.small, .medium, .large]
     @ObservedObject var orderModel: OrderModel
     @EnvironmentObject var userPreferences: UserPreferences
     @State var didOrder: Bool = false
@@ -17,7 +17,7 @@ struct MenuDetailView: View {
     
     var menuItem:MenuItem
     var formattedPrice:String{
-        String(format:"%3.2f",menuItem.price * Double(quantity))
+        String(format:"%3.2f",menuItem.price * Double(quantity) * userPreferences.size.rawValue)
     }
     func addItem(){
         //  orderModel.add(menuID: menuItem.id)
@@ -38,18 +38,17 @@ struct MenuDetailView: View {
                     .layoutPriority(3)
                 
                 Spacer()
-                HStack{
-                    Spacer()
+          
+                Picker(selection: $userPreferences.size, content: {
+                    ForEach(sizes, id: \.self) { size in
+                        Text(size.formatted()).tag(size)
+                    }
+                }, label: {
                     Text("Pizza size")
-                    Text(userPreferences.size.formatted())
-                }
-                .font(.headline)
-//                HStack{
-//                    Text("Quantity:")
-//                    Text("1")
-//                        .bold()
-//                    Spacer()
-//                }
+                })
+                    .pickerStyle(SegmentedPickerStyle())
+                    .font(.headline)
+         
                 Stepper(value: $quantity, in: 1...10) {
                     Text("Quantity: \(quantity)")
                         .bold()
@@ -74,6 +73,7 @@ struct MenuDetailView: View {
                             .foregroundColor(Color("IP"))
                             .cornerRadius(5)
                     }
+                    // uncomment below to get system default alert view
                     //        .alert("You have ordered:'\(menuItem.name)' pizza", isPresented: $didOrder) {}
                     .sheet(isPresented: $didOrder) {
                         ConfirmView(menuID: menuItem.id, orderModel: orderModel, isPresented: $didOrder, quantity: $quantity)
