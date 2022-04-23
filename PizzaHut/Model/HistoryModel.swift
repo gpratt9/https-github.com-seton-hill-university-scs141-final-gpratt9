@@ -20,10 +20,10 @@ struct PizzaHistoryItems:Codable{
     var items:[HistoryItem] = []
 }
 
-class HistoryModel{
+class HistoryModel {
     private var items = PizzaHistoryItems()
-    var historyItems:[HistoryItem]{
-        items.items
+    var historyItems: [HistoryItem]{
+        return items.items
     }
     init(){
         loadData()

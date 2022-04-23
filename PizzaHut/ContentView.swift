@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var orderModel: OrderModel
     @State var isMenuDisplayed: Bool = true
     
     var body: some View {
@@ -20,9 +21,9 @@ struct ContentView: View {
                 PageTitleView(isDisplayingOrder: isMenuDisplayed, title: "Order Pizza!")
             }
             Spacer(minLength: 20)
-            MenuListView()
+            MenuListView(orderModel: orderModel)
                 .layoutPriority(isMenuDisplayed ? 1.0 : 0.5)
-            OrderListView()
+            OrderListView(orderModel: orderModel)
                 .layoutPriority(isMenuDisplayed ? 0.5 : 1.0)
             Spacer()
         }
@@ -33,8 +34,12 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
-            ContentView()
+            ContentView(orderModel: OrderModel())
+                .environmentObject(UserPreferences())
+            
+            ContentView(orderModel: OrderModel())
+                .environmentObject(UserPreferences())
+                .previewDevice(PreviewDevice(rawValue: "iPad 12"))
                 .colorScheme(.dark)
                 .background(.black)
         }
