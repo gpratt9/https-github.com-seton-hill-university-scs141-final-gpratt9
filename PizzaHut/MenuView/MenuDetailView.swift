@@ -13,8 +13,8 @@ import SwiftUI
 var size:Size = .medium
 struct MenuDetailView: View {
     
-   @EnvironmentObject var settings:UserPreferences
-   @ObservedObject var orderModel:OrderModel
+    @EnvironmentObject var settings:UserPreferences
+    @ObservedObject var orderModel:OrderModel
     @State var didOrder:Bool = false
     @State var quantity:Int = 1
     var menuItem:MenuItem
@@ -25,41 +25,40 @@ struct MenuDetailView: View {
         didOrder = true
     }
     
-    func isCompactPortrait(geo:GeometryProxy)->Bool{
+    func isCompactPortrait(geo: GeometryProxy)->Bool{
         return geo.size.height <= 414
     }
     
     func titleView()->some View{
-         return
-                HStack{
-                        SelectedImageView(image: "\(self.menuItem.id)_250w")
-                            .padding(5)
-                    Text(self.menuItem.description)
-                        .padding()
-                    Spacer()
-                }
+        return GeometryReader { geo in
+            HStack{
+                SelectedImageView(image: "\(self.menuItem.id)_250w")
+                    .padding(5)
+                Text(self.menuItem.description)
+                    .frame(width:  geo.size.width * 2/5)
+                    .padding()
+                Spacer()
             }
-    
-    
-    
+        }
+    }
     
     func menuOptionsView()-> some View{
-       return  VStack{
+        return  VStack{
             SizePickerView()
             QuantityStepperView(quantity:$quantity)
             PageTitleView(title: "Order:  \(formattedPrice)")
             Spacer()
         }
     }
-        
+    
     
     var body: some View {
+        GeometryReader { geo in
             VStack {
                 HStack{
                     PageTitleView(title: self.menuItem.name)
                     Button(action: self.addItem) {
                         Text("Add to order")
-                            
                             .font(.title)
                             .fontWeight(.bold)
                             .padding([.leading,.trailing])
@@ -71,15 +70,25 @@ struct MenuDetailView: View {
                         ConfirmView(menuID: self.menuItem.id, orderModel:self.orderModel, isPresented: self.$didOrder, quantity: self.$quantity)
                     }
                 }
-                VStack{
-                    self.titleView()
-                    self.menuOptionsView()
+                if isCompactPortrait(geo: geo) {
+                    HStack{
+                        self.titleView()
+                        self.menuOptionsView()
+                    }
+                } else {
+                    VStack{
+                        self.titleView()
+                        self.menuOptionsView()
+                    }
                 }
                 
-                }//Root VStack
-                .padding(.top, 5)
+            }
+        }
+        //Root VStack
+        .padding(.top, 5)
     }// body
 }// MenuDetailView
+
 struct MenuDetailView_Previews: PreviewProvider {
     static var previews: some View {
         MenuDetailView(orderModel:OrderModel(),menuItem: testMenuItem)
