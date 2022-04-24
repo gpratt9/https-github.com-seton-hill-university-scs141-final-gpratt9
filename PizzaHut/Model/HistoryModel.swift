@@ -2,8 +2,8 @@
 //  HistoryModel.swift
 //  Pizza
 //
-//  Created by Steven Lipton on 9/4/19.
-//  Copyright © 2019 Steven Lipton. All rights reserved.
+//  Created by Ravi Kiran HR on 9/4/19.
+//  Copyright © 2019 Ravi Kiran HR. All rights reserved.
 //
 
 import Foundation

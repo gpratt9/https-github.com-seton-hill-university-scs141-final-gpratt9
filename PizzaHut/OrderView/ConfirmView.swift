@@ -2,8 +2,8 @@
 //  ConfirmView.swift
 //  HuliPizza
 //
-//  Created by Steven Lipton on 9/13/19.
-//  Copyright © 2019 Steven Lipton. All rights reserved.
+//  Created by Ravi Kiran HR on 9/13/19.
+//  Copyright © 2019 Ravi Kiran HR. All rights reserved.
 //
 
 import SwiftUI
@@ -15,7 +15,6 @@ struct ConfirmView: View {
     @Binding var isPresented: Bool
     @Binding var quantity: Int
     @State var comments: String = ""
-   // @State var confirmQuantity: Int = 1
     
     ///extracts the menu item name based on `menuID`
     var name:String{
@@ -23,7 +22,7 @@ struct ConfirmView: View {
     }
     
     func addItem(){
-        orderModel.add(menuID: menuID, quantity: quantity, comments: comments)
+        orderModel.add(menuID: menuID,size: userPreferences.size, quantity: quantity, comments: comments)
         isPresented = false
     }
     
