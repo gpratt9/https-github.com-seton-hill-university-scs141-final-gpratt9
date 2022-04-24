@@ -132,6 +132,7 @@ let testOrderItem = OrderItem(id: 1, menuID: 1, name: "Huli Chicken", comments: 
 
 ///An class for user preferences in ordering. Will be used with an environment object.
 class UserPreferences: ObservableObject {
-    @Published var size:Size = .medium
+    @Published var size: Size = .medium
+    let sizes: [Size] = [.small, .medium, .large]
 }
 

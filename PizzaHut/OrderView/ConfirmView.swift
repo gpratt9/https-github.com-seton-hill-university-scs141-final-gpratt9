@@ -15,6 +15,7 @@ struct ConfirmView: View {
     @Binding var isPresented: Bool
     @Binding var quantity: Int
     @State var comments: String = ""
+   // @State var confirmQuantity: Int = 1
     
     ///extracts the menu item name based on `menuID`
     var name:String{
@@ -47,14 +48,32 @@ struct ConfirmView: View {
                 .font(.headline)
             TextField("Enter your comments here:", text: $comments)
                 .background(Color("G4"))
+            SizePickerView()
+            QuantityStepperView(quantity: $quantity)
+
             Spacer()
-            Button(action: addItem){
-                Text("Add")
-                    .font(.title)
-                .padding()
-                .background(Color("G4"))
-                .cornerRadius(10)
-            }.padding([.bottom])
+            HStack {
+                Button(action: addItem){
+                    Text("Add")
+                        .font(.title)
+                    .padding()
+                    .background(Color("G4"))
+                    .cornerRadius(10)
+                }.padding([.bottom, .leading])
+                
+                Spacer()
+
+                Button {
+                    isPresented = false
+                } label: {
+                    Text("Cancel")
+                        .font(.title)
+                }.padding()
+                    .background(Color("G4"))
+                    .cornerRadius(10)
+                    .padding([.bottom, .trailing])
+
+            }
         }
         .background(Color("G3"))
         .foregroundColor(Color("IP"))
@@ -65,5 +84,6 @@ struct ConfirmView: View {
 struct ConfirmView_Previews: PreviewProvider {
     static var previews: some View {
         ConfirmView(menuID: 0, orderModel: OrderModel(), isPresented: .constant(true), quantity: .constant(1))
+            .environmentObject(UserPreferences())
     }
 }

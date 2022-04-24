@@ -9,7 +9,6 @@
 import SwiftUI
 ///A `View`for entering in an order. Takes basic information about the order from `menuItem`
 struct MenuDetailView: View {
-    let sizes: [Size] = [.small, .medium, .large]
     @ObservedObject var orderModel: OrderModel
     @EnvironmentObject var userPreferences: UserPreferences
     @State var didOrder: Bool = false
@@ -38,22 +37,10 @@ struct MenuDetailView: View {
                     .layoutPriority(3)
                 
                 Spacer()
-          
-                Picker(selection: $userPreferences.size, content: {
-                    ForEach(sizes, id: \.self) { size in
-                        Text(size.formatted()).tag(size)
-                    }
-                }, label: {
-                    Text("Pizza size")
-                })
-                    .pickerStyle(SegmentedPickerStyle())
-                    .font(.headline)
-         
-                Stepper(value: $quantity, in: 1...10) {
-                    Text("Quantity: \(quantity)")
-                        .bold()
-                }
-                .padding()
+                
+                SizePickerView()
+                QuantityStepperView(quantity: $quantity)
+                
                 HStack{
                     Text("Order:  \(formattedPrice)")
                         .font(.headline)
@@ -78,7 +65,6 @@ struct MenuDetailView: View {
                     .sheet(isPresented: $didOrder) {
                         ConfirmView(menuID: menuItem.id, orderModel: orderModel, isPresented: $didOrder, quantity: $quantity)
                     }
-                    
                     Spacer()
                 }
                 .padding(.top)
@@ -94,3 +80,4 @@ struct MenuDetailView_Previews: PreviewProvider {
             .environmentObject(UserPreferences())
     }
 }
+
