@@ -16,6 +16,9 @@ struct OrderListView: View {
                     ForEach(orderModel.orders) { item in
                         OrderRowView(orderItem: item)
                     }
+                    .onDelete { indexSet in
+                        orderModel.orders.remove(atOffsets: indexSet)
+                    }
                 }
             }
         }
