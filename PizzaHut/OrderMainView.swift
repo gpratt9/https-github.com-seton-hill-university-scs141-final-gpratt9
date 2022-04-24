@@ -25,6 +25,7 @@ struct OrderMainView: View {
                 .layoutPriority(isMenuDisplayed ? 1.0 : 0.5)
             OrderListView(orderModel: orderModel)
                 .layoutPriority(isMenuDisplayed ? 0.5 : 1.0)
+                .animation(.spring(), value: isMenuDisplayed)
             Spacer()
         }
         .padding()

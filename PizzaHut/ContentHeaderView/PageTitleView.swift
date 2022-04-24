@@ -19,7 +19,9 @@ struct PageTitleView: View {
                 .fontWeight(.heavy)
                 .padding(.trailing)
         }.overlay(
-            Image(systemName: isDisplayingOrder ?? false ? "chevron.up.square" : "chevron.down.square" )
+            Image(systemName: "chevron.up.square")
+                .rotationEffect(isDisplayingOrder ?? false ? Angle(degrees: 0.0) : Angle(degrees: 180.0))
+                .animation(.easeInOut(duration: 0.5), value: isDisplayingOrder)
                 .font(.title)
                 .foregroundColor(isDisplayingOrder != nil ? Color("G1"): .clear)
                 .padding()

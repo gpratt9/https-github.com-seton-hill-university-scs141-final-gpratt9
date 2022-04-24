@@ -20,6 +20,7 @@ struct OrderRowView: View {
             }
             Text(orderItem.comments)
         }
+        .animation(.none, value: 1)
     }
 }
 

@@ -35,6 +35,13 @@ struct ConfirmView: View {
             Divider()
             SelectedImageView(image: "\(menuID)_250w")
                 .padding(10)
+            // Un comment below line to add tap gesture with in the view
+//                .onTapGesture(count: 2) {
+//                    isPresented = false
+//                }
+                .gesture(TapGesture(count: 2).onEnded({ _ in
+                    isPresented = false
+                }))
             Divider()
             Text("Confirm your order of \(quantity) \(userPreferences.size.formatted()) \(name) pizza")
                 .font(.headline)
