@@ -11,9 +11,12 @@ struct OrderListView: View {
     @ObservedObject var orderModel: OrderModel
     var body: some View {
         VStack {
-            ListHeaderView(title: "Your Order", orderModel: orderModel)
-            List(orderModel.orders) { item in
-                OrderRowView(orderItem: item)
+            List {
+                Section(header: ListHeaderView(title: "Your Order", orderModel: orderModel)) {
+                    ForEach(orderModel.orders) { item in
+                        OrderRowView(orderItem: item)
+                    }
+                }
             }
         }
     }
