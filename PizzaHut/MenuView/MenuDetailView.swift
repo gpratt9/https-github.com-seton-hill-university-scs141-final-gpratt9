@@ -36,6 +36,7 @@ struct MenuDetailView: View {
                     .padding(5)
                 Text(self.menuItem.description)
                     .frame(width:  geo.size.width * 2/5)
+                    .font(geo.size.height > 200 ? .body : .caption)
                     .padding()
                 Spacer()
             }
@@ -59,7 +60,7 @@ struct MenuDetailView: View {
                     PageTitleView(title: self.menuItem.name)
                     Button(action: self.addItem) {
                         Text("Add to order")
-                            .font(.title)
+                            .font(isCompactPortrait(geo: geo) ? staticFont : .title)
                             .fontWeight(.bold)
                             .padding([.leading,.trailing])
                             .background(Color("G3"))

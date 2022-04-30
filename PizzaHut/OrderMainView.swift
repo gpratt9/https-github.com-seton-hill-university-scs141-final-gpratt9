@@ -13,8 +13,8 @@ struct OrderMainView: View {
     
     var body: some View {
         VStack {
-            ContentHeaderView()
-                .layoutPriority(2)
+//            ContentHeaderView()
+//                .layoutPriority(2)
             Button {
                 isMenuDisplayed.toggle()
             } label: {

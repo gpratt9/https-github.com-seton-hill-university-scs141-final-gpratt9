@@ -21,6 +21,9 @@ struct MenuListView: View {
                             .listRowInsets(EdgeInsets())
                     }
                 }
+                .refreshable {
+                    print("Refresh your code here")
+                }
                 .navigationTitle("Order Pizza")
             }
         }
