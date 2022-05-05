@@ -1,10 +1,8 @@
 //
 //  MenuDetailView.swift
 //  Pizza
-//  adaptive version for landscape.
-//  creates two functions of views to be able to switch them between Hstack and Vstack.
-//  Created by Ravi Kiran HR on 12/26/20.
-//  Copyright © 2019 Ravi Kiran HR. All rights reserved.
+//
+//  Gavin Pratt 4/4/22
 //
 
 import SwiftUI

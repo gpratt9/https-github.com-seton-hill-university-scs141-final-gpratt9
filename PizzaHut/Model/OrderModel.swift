@@ -2,8 +2,7 @@
 //  OrderModel.swift
 //  Pizza
 //
-//  Created by Ravi Kiran HR on 9/1/19.
-//  Copyright © 2019 Ravi Kiran HR. All rights reserved.
+//  Gavin Pratt 4/4/22
 //
 
 import Foundation
